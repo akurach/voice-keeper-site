@@ -6,6 +6,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light">
 <title>Voice Keeper</title>
+<script src="./language.js"></script>
 <!-- Medeo Sans license
 Copyright 2026 The Medeo Project Authors (https://github.com/DNFDEVS/medeo-font)
 Copyright 2024-2026 The Geist Project Authors (https://github.com/vercel/geist-font)
@@ -432,7 +433,7 @@ body { background:var(--field); }
       <a href="#capture" data-en="Features">Возможности</a>
       <a href="#privacy" data-en="Privacy">Приватность</a>
       <a class="nav-install" href="#platforms" data-en="Platforms">Платформы</a>
-      <div class="language" role="group" aria-label="Язык">
+      <div class="language" role="group" aria-label="Язык" data-language-picker>
         <button type="button" data-lang="ru" lang="ru" aria-label="Русский" aria-pressed="true">RU</button><span aria-hidden="true">/</span>
         <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
       </div>
@@ -723,8 +724,6 @@ function selectLanguage(next) {
     lang = next;
     audio.src = clips[lang].src;
   }
-  document.documentElement.lang = lang;
-  document.querySelector(".language").setAttribute("aria-label", lang === "ru" ? "Язык" : "Language");
   document.querySelector(".path-picker").setAttribute("aria-label", lang === "ru" ? "Маршрут данных" : "Data path");
   document.querySelectorAll("[data-en-alt]").forEach(img => {
     img.dataset.ruAlt ??= img.alt;
@@ -735,12 +734,10 @@ function selectLanguage(next) {
   document.querySelector(".exhibit-steps").setAttribute("aria-label", lang === "ru" ? "Этап записи" : "Recording stage");
   document.querySelector(".stage-nav").setAttribute("aria-label", lang === "ru" ? "Демонстрация" : "Demo steps");
   seek.setAttribute("aria-label", lang === "ru" ? "Позиция воспроизведения" : "Playback position");
-  document.querySelectorAll("[data-lang]").forEach(el => el.setAttribute("aria-pressed", String(el.dataset.lang === lang)));
   updatePlayer();
   drawRibbon();
 }
 
-document.querySelectorAll("[data-lang]").forEach(el => el.addEventListener("click", () => selectLanguage(el.dataset.lang)));
 const templateButtons = [...document.querySelectorAll("[data-panel]")];
 templateButtons.forEach(el => el.addEventListener("click", () => {
   templateButtons.forEach(button => {
@@ -877,7 +874,7 @@ routeButtons.forEach(node=>node.addEventListener('click',()=>{
   routeButtons.forEach(item=>item.setAttribute('aria-pressed',String(node===item)));
 }));
 sourceCopy[1].hidden=true;
-selectLanguage(/^ru(?:-|$)/i.test(navigator.language) ? "ru" : "en");
+voiceKeeperLanguage.bind(selectLanguage);
 document.documentElement.classList.add('js-ready');
 showDemo(0);
 updateExhibit(0,0);
