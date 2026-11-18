@@ -1,22 +1,23 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Политика конфиденциальности — Voice Keeper</title>
+  <title>Voice Keeper Privacy Policy</title>
+  <link rel="canonical" href="https://voicekeeper.kurach.me/privacy.html">
   <link rel="stylesheet" href="./legal.css">
   <script src="./language.js"></script>
 </head>
 <body>
   <header>
     <a href="./">Voice Keeper</a>
-    <div class="language-picker" role="group" aria-label="Язык" data-language-picker>
-      <button type="button" data-lang="ru" lang="ru" aria-label="Русский" aria-pressed="true">RU</button>
-      <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+    <div class="language-picker" role="group" aria-label="Language" data-language-picker>
+      <button type="button" data-lang="ru" lang="ru" aria-label="Русский" aria-pressed="false">RU</button>
+      <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
     </div>
   </header>
   <main>
-    <article lang="ru" data-language-panel>
+    <article lang="ru" data-language-panel hidden>
       <h1>Политика конфиденциальности Voice Keeper</h1>
 
       <h2>Библиотека на устройстве</h2>
@@ -24,25 +25,35 @@
       <p>При настройке уже привязанного PLAUD Note через электронную почту введённый адрес и код подтверждения обрабатывает PLAUD. Данные доступа к диктофону сохраняются в защищённом хранилище устройства. После настройки библиотека и Bluetooth-подключение доступны офлайн.</p>
 
       <h2>Google Диск</h2>
-      <p>Google Диск подключается по вашему выбору. Вы выбираете аккаунт на странице Google или в системном окне Android и разрешаете доступ. Voice Keeper не получает пароль от Google. Приложение читает идентификатор и доступные сведения подключённого аккаунта, чтобы показать его в настройках и проверить, в какой аккаунт направляются копии. Данные сессии защищены Связкой ключей macOS или Android Keystore.</p>
+      <p>Подключение Google Диска необязательно. Вы выбираете свой аккаунт Google и подтверждаете разрешения на странице Google или в системном окне Android. Копирование записей и копирование настроек включаются отдельно. Voice Keeper не получает пароль от Google.</p>
+
+      <h3>К каким данным приложение получает доступ</h3>
+      <p>При подключении Voice Keeper получает идентификатор аккаунта Google Диска (<code>permissionId</code>) и доступные данные для его отображения, например электронную почту. Идентификатор нужен, чтобы проверять, что резервные копии записываются в выбранный аккаунт. Сохранённая приложением сессия защищена Связкой ключей macOS или Android Keystore.</p>
       <ul>
-        <li><code>drive.file</code> нужен для создания, проверки и обновления файлов резервных копий, к которым Google разрешил доступ приложению.</li>
-        <li><code>drive.appdata</code> нужен для доступа к собственным скрытым данным Voice Keeper, в том числе к ранее сохранённым копиям настроек.</li>
+        <li><code>drive.file</code> даёт доступ к файлам и папкам резервных копий, которыми Voice Keeper управляет в Google Диске. Он нужен, чтобы создавать, проверять, обновлять копии и читать поддерживаемые настройки для восстановления.</li>
+        <li><code>drive.appdata</code> даёт доступ к скрытой области данных Voice Keeper, где могут находиться ранее сохранённые копии настроек.</li>
       </ul>
-      <p>После включения резервного копирования Voice Keeper передаёт данные напрямую с вашего устройства в выбранный аккаунт Google. Для записей копируются аудио, расшифровки и сохранённые разборы. Для настроек копируются шаблоны, правила и доступные настройки приложения. Новые копии хранятся в папке Voice Keeper на вашем Диске. Из копии можно восстановить поддерживаемые настройки, например шаблоны и правила.</p>
-      <p>Приложение использует данные Google API для подключения, резервного копирования, проверки файлов и восстановления настроек. Разработчик не получает доступ к копиям или токенам Google через интеграцию. Voice Keeper не продаёт данные Google и не использует их для рекламы. Использование и передача данных, полученных через Google API, соответствуют <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, включая требования Limited Use.</p>
+      <p>Для резервного копирования приложение использует идентификаторы файлов и папок, имена, размер, контрольные суммы, время изменения и свойства резервной копии. Например, размер и контрольные суммы помогают проверить, что загруженный файл совпадает с локальной копией.</p>
+
+      <h3>Какие данные передаются Google и зачем</h3>
+      <p>При включённом копировании записи могут включать WAV-аудио, расшифровки, сохранённые разборы и названия файлов. Копия настроек может включать пользовательские шаблоны с инструкциями, правила по фразам и поддерживаемые настройки приложения. Из копии можно восстановить поддерживаемые настройки, например шаблоны и правила.</p>
+      <p>Приложение передаёт эти файлы напрямую с устройства в ваш аккаунт Google Диска. Google получает файлы как выбранный вами провайдер хранения. Разработчик Voice Keeper не получает копии или токены Google через эту интеграцию. Приложение не использует Google API для создания изображений. Необязательный текстовый разбор через ChatGPT описан ниже.</p>
+
+      <h3>Хранение, отключение и удаление</h3>
+      <p>Новые видимые копии хранятся в папке Voice Keeper на вашем Диске, пока вы не удалите их в Google Диске. Более ранние копии настроек могут находиться в скрытой области данных приложения. Сроки хранения в корзине и окончательного удаления определяет Google Диск.</p>
+      <p>Вы можете выключить копирование или выбрать «Отключить», чтобы удалить сохранённую сессию Google из приложения и прекратить копирование. Чтобы отозвать разрешение у Google, используйте <a href="https://myaccount.google.com/connections">настройки подключений аккаунта</a>. Отключение и удаление локальной записи не удаляют уже загруженные файлы.</p>
+
+      <p>Voice Keeper использует данные Google API для подключения аккаунта, резервного копирования, проверки файлов и восстановления настроек. Приложение не продаёт эти данные, не использует их для рекламы и не передаёт другим сервисам через интеграцию с Диском. Использование и передача данных, полученных через Google API, соответствуют <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, включая требования Limited Use.</p>
 
       <h2>Другие подключаемые сервисы</h2>
       <p>Если вы включаете копирование на Яндекс Диск или выбираете сетевую папку или WebDAV, файлы передаются в указанное вами хранилище. Если вы подтверждаете разбор через ChatGPT, OpenAI получает текст выбранной расшифровки и инструкции к запросу. Исходный аудиофайл при разборе остаётся в библиотеке. В подключённых сервисах действуют их собственные условия и правила обработки данных.</p>
 
-      <h2>Отключение доступа и удаление</h2>
-      <p>Копирование можно выключить в настройках Voice Keeper. Команда «Отключить» удаляет сохранённую сессию Google из приложения и прекращает копирование. Вы также можете отозвать разрешение в <a href="https://myaccount.google.com/connections">настройках подключений аккаунта Google</a>.</p>
-      <p>Локальные записи можно удалить из библиотеки. Загруженные файлы остаются на Google Диске после удаления локальных записей или отключения интеграции. Чтобы удалить облачные копии, удалите файлы в Google Диске. Данными, отправленными другим сервисам, можно управлять в этих сервисах.</p>
+      <p>Локальные записи можно удалять из библиотеки. Данными, отправленными в другие сервисы, можно управлять в этих сервисах.</p>
 
       <h2>Обратная связь</h2>
       <p>Общие вопросы о конфиденциальности можно задать в <a href="https://github.com/akurach/voice-keeper-site/issues">разделе обращений Voice Keeper</a>. Этот раздел публичный. Не прикладывайте личные записи, данные аккаунта или токены.</p>
     </article>
-    <article lang="en" data-language-panel hidden>
+    <article lang="en" data-language-panel>
       <h1>Voice Keeper Privacy Policy</h1>
 
       <h2>On-device library</h2>
@@ -50,28 +61,38 @@
       <p>When you set up an already linked PLAUD Note by email, PLAUD processes the email address and verification code you enter. The device’s secure storage holds the access data for the recorder. After setup, the library and Bluetooth connection are available offline.</p>
 
       <h2>Google Drive</h2>
-      <p>Connecting Google Drive is optional. You select an account on a Google page or in the Android system dialog and grant access. Voice Keeper does not receive your Google password. The app reads the identifier and available account details to display the connected account in settings and verify which account receives backups. The macOS Keychain or Android Keystore protects session data.</p>
+      <p>Connecting Google Drive is optional. You select your own Google account and approve access on a Google page or in the Android system dialog. Recording backups and settings backups are separate options. Voice Keeper does not receive your Google password.</p>
+
+      <h3>Data the app accesses</h3>
+      <p>When you connect, Voice Keeper receives the Google Drive account identifier (<code>permissionId</code>) and available display information, such as your email address. It uses the identifier to verify that backups go to the account you selected. The app protects its saved Google session with the macOS Keychain or Android Keystore.</p>
       <ul>
-        <li><code>drive.file</code> lets Voice Keeper create, verify, and update backup files that Google allows the app to access.</li>
-        <li><code>drive.appdata</code> lets Voice Keeper access its own hidden data, including previously saved settings backups.</li>
+        <li><code>drive.file</code> grants access to the backup files and folders Voice Keeper manages in Google Drive. This lets it create, verify, and update backups and read supported settings for restoration.</li>
+        <li><code>drive.appdata</code> grants access to Voice Keeper’s hidden app data, which may contain previously saved settings backups.</li>
       </ul>
-      <p>When you enable backups, Voice Keeper sends data directly from your device to the Google account you selected. Recording backups include audio, transcripts, and saved analyses. Settings backups include templates, rules, and available app settings. New backups are stored in the Voice Keeper folder on your Drive. You can restore supported settings, such as templates and rules, from a backup.</p>
-      <p>Voice Keeper uses data from Google APIs to connect your account, back up and verify files, and restore settings. The developer does not gain access to backups or Google tokens through this integration. Voice Keeper does not sell Google data or use it for advertising. The use and transfer of data received through Google APIs comply with the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+      <p>For backup operations, the app uses file and folder identifiers, names, sizes, checksums, modification times, and backup properties. For example, file sizes and checksums help verify that an uploaded file matches the local copy.</p>
+
+      <h3>Data sent to Google and why</h3>
+      <p>If you enable recording backups, they may include WAV audio, transcripts, saved analyses, and file names. Settings backups may include custom templates and their instructions, phrase rules, and supported app preferences. You can restore supported settings, such as templates and rules, from a backup.</p>
+      <p>Voice Keeper sends the files directly from your device to your Google Drive account. Google receives the files as your chosen storage provider. The Voice Keeper developer does not receive copies or Google tokens through this integration. The app does not use Google APIs to generate images. The optional ChatGPT text analysis is described below.</p>
+
+      <h3>Storage, disconnection, and deletion</h3>
+      <p>New visible backups stay in the Voice Keeper folder on your Drive until you delete them in Google Drive. Older settings backups may be stored in the app’s hidden data area. Google Drive manages trash retention and permanent deletion.</p>
+      <p>You can turn off backups or select “Disconnect” to remove the app’s saved Google session and stop backups. To revoke access at Google, use your <a href="https://myaccount.google.com/connections">Google Account connection settings</a>. Disconnecting or deleting a local recording does not remove files you previously uploaded.</p>
+
+      <p>Voice Keeper uses data from Google APIs to connect your account, back up and verify files, and restore settings. It does not sell that data, use it for advertising, or send it to other services through the Drive integration. The use and transfer of data received through Google APIs comply with the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
 
       <h2>Other connected services</h2>
       <p>If you enable backups to Yandex Disk or select a network folder or WebDAV destination, Voice Keeper sends files to the storage you specify. If you confirm a ChatGPT analysis, OpenAI receives the selected transcript and the instructions for the request. The original audio file stays in your library during analysis. Each connected service has its own terms and privacy policies.</p>
 
-      <h2>Revoking access and deleting data</h2>
-      <p>You can turn off backups in Voice Keeper settings. Selecting “Disconnect” removes the saved Google session from the app and stops backups. You can also revoke access in your <a href="https://myaccount.google.com/connections">Google Account connection settings</a>.</p>
-      <p>You can delete local recordings from your library. Uploaded files stay on Google Drive when you delete local recordings or disconnect the integration. To remove cloud copies, delete the files in Google Drive. You can manage data sent to other services within those services.</p>
+      <p>You can delete local recordings from the library. You can manage data sent to other services within those services.</p>
 
       <h2>Feedback</h2>
       <p>For general privacy questions, use the <a href="https://github.com/akurach/voice-keeper-site/issues">Voice Keeper issue tracker</a>. The tracker is public. Do not attach personal recordings, account data, or tokens.</p>
     </article>
   </main>
   <footer>
-    <a lang="ru" data-language-panel href="./terms.html">Условия использования</a>
-    <a lang="en" data-language-panel href="./terms.html" hidden>Terms of Service</a>
+    <a lang="ru" data-language-panel href="./terms.html" hidden>Условия использования</a>
+    <a lang="en" data-language-panel href="./terms.html">Terms of Service</a>
   </footer>
   <script>voiceKeeperLanguage.bind();</script>
 </body>
